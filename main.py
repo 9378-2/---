@@ -1,6 +1,8 @@
 import telebot
+import os
 
-bot = telebot.TeleBot("токен")
+TOKEN = os.environ.get("BOT_TOKEN")
+bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def main(message):
@@ -15,26 +17,15 @@ def ifno(message):
 
     if text == "привет":
         bot.send_message(message.chat.id, "Нетидинахуй")
-
-    elif "савелий" in message.text.lower():
+    elif "савелий" in text:
         bot.send_message(message.chat.id, "савелий сын шлюхи")
-
-    elif "корнет" in message.text.lower():
+    elif "корнет" in text:
         bot.send_message(message.chat.id, "корнет —  нищета ебанная живущая в окопе")
-
-    elif "кета" in message.text.lower():
+    elif "кета" in text:
         bot.reply_to(message, "Омнiмэн")
-
-    elif "схуяли" in message.text.lower():
+    elif "схуяли" in text or "почему" in text:
         bot.reply_to(message, "Всевышний мзбб, творец всего так захотел")
-
-    elif "почему" in message.text.lower():
-        bot.reply_to(message, "Всевышний мзбб, творец всего так захотел")
-
-    elif "ангина" in message.text.lower():
-        bot.reply_to(message, "Ангина любит сосать (хуи)")
-
-    elif "ванесса" in message.text.lower():
+    elif "ангина" in text or "ванесса" in text:
         bot.reply_to(message, "Ангина любит сосать (хуи)")
 
 bot.delete_webhook()
